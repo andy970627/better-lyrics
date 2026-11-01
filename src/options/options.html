@@ -227,6 +227,15 @@
 								<span class="ui-row__label">__MSG_options_language_exclusions__</span>
 								<span data-icon="chevron"></span>
 							</button>
+							<button class="ui-row" id="saved-words-btn" type="button">
+								<span class="ui-row__label"><span>__MSG_vocab_options_savedWords__<span class="ui-row__sub">__MSG_vocab_options_savedWordsHint__</span></span></span>
+								<span class="ui-badge ui-badge--count" id="saved-words-count">0</span>
+								<span data-icon="chevron"></span>
+							</button>
+							<div class="ui-row" id="hidden-translations-row" hidden="">
+								<span class="ui-row__label" id="hidden-translations-count"></span>
+								<button class="ui-button ui-button--compact" id="hidden-translations-restore-btn" type="button">__MSG_vocab_options_restoreAll__</button>
+							</div>
 						</div>
 						<div class="ui-panel" data-panel="romanization">
 							<div class="ui-row">
@@ -501,6 +510,29 @@
 
 				<div class="ui-modal__foot">
 					<button id="lang-exclusions-reset-btn" type="button" class="ui-button ui-button--header">__MSG_options_resetToDefault__</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="saved-words-modal-overlay" class="ui-modal" hidden="">
+			<div class="ui-modal__surface saved-words-modal">
+				<div class="ui-modal__head">
+					<h3 class="ui-modal__title">__MSG_vocab_options_savedWords__</h3>
+					<button type="button" class="ui-button ui-button--header ui-button--icon ui-modal__close" data-modal-close="" aria-label="__MSG_ui_close__">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+							<path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"></path>
+						</svg>
+					</button>
+				</div>
+
+				<div class="ui-modal__body" data-scroll-fade="">
+					<p class="saved-words-empty" id="saved-words-empty">__MSG_vocab_options_empty__</p>
+					<ul class="saved-words-list" id="saved-words-list" hidden=""></ul>
+				</div>
+
+				<div class="ui-modal__foot">
+					<button id="saved-words-clear-btn" type="button" class="ui-button ui-button--header ui-button--danger-tint">__MSG_vocab_options_clearAll__</button>
+					<button id="saved-words-copy-btn" type="button" class="ui-button ui-button--header ui-button--primary">__MSG_vocab_options_copyCsv__</button>
 				</div>
 			</div>
 		</div>

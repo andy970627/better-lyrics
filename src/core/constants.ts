@@ -207,6 +207,7 @@ export const LOADER_TRANSITION_ENDED = "[BetterLyrics] Loader Transition Ended" 
 // Feature State Logs
 export const AUTO_SWITCH_ENABLED_LOG = "[BetterLyrics] Auto switch enabled, switching to lyrics tab" as const;
 export const TRANSLATION_ENABLED_LOG = "[BetterLyrics] Translation enabled, translating lyrics. Language: " as const;
+export const LYRIC_MENU_ERROR_LOG = "[BetterLyrics] Lyric menu action failed:" as const;
 export const TRANSLATION_ERROR_LOG = "[BetterLyrics] Unable to translate lyrics due to error" as const;
 export const SYNC_DISABLED_LOG =
   "[BetterLyrics] Syncing lyrics disabled due to all lyrics having a start time of 0" as const;

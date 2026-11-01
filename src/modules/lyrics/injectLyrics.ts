@@ -34,6 +34,7 @@ import { publishSecondaryViews } from "@modules/ui/secondaryViews";
 import { injectRomanization, injectTranslation, type LineData } from "@braccato/core";
 import { findBestLanguageMatch, langCodesMatch, languageMatchesAny } from "@utils";
 import { logCore } from "@core/logger";
+import { isTranslationHidden } from "@core/vocabulary";
 
 export type { LineData };
 
@@ -308,7 +309,9 @@ async function processBatchTranslationsAndRomanizations(
     // --- Translation ---
     const isSourceLangDisabled = !!trustedLanguage && isTranslationDisabledForLang(trustedLanguage);
 
-    if (isTranslateEnabled && !isSourceLangDisabled) {
+    const isHiddenByUser = isTranslationHidden(data.videoId, targetTranslationLang, item.words);
+
+    if (isTranslateEnabled && !isSourceLangDisabled && !isHiddenByUser) {
       let translationResult: string | null = null;
       let translationLanguage = targetTranslationLang;
 
@@ -400,7 +403,11 @@ async function processBatchTranslationsAndRomanizations(
         }
 
         response.results.forEach((result, i) => {
-          if (result && !isTranslationDisabledForLang(result.originalLanguage)) {
+          if (
+            result &&
+            !isTranslationDisabledForLang(result.originalLanguage) &&
+            !isTranslationHidden(data.videoId, targetTranslationLang, translationBatch[i].text)
+          ) {
             const originalIndex = translationBatch[i].index;
             injectTranslation(doc, linesData[originalIndex].lyricElement, result.translatedText, targetTranslationLang);
             recordLyricDecoration(originalIndex, {

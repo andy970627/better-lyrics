@@ -900,6 +900,120 @@ ytmusic-player-page:not([is-mweb-modernization-enabled]) #side-panel.blyrics-has
 	background-color: color-mix(in srgb, var(--dock-accent, hsl(45, 95%, 60%)) 15%, transparent);
 }
 
+/* Lyric line right-click menu */
+.blyrics-lyric-menu {
+	max-width: 280px;
+	max-height: none;
+}
+
+.blyrics-lyric-menu .blyrics-dock__menu-item {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.blyrics-lyric-menu .blyrics-dock__menu-item:focus-visible {
+	background-color: hsla(0, 0%, 100%, 0.08);
+	color: hsla(0, 0%, 100%, 0.96);
+}
+
+.blyrics-lyric-notice {
+	position: fixed;
+	z-index: 2147483000;
+	max-width: 280px;
+	padding: 6px 10px;
+	border-radius: 9px;
+	background-color: hsla(0, 0%, 8%, 0.82);
+	box-shadow: rgba(0, 0, 0, 0.28) 0 10px 28px -10px;
+	backdrop-filter: blur(26px);
+	color: hsla(0, 0%, 100%, 0.92);
+	font-size: 12px;
+	font-weight: 500;
+	pointer-events: none;
+	opacity: 0;
+	transform: translateY(4px);
+	transition:
+		opacity 160ms cubic-bezier(0.4, 0, 0.2, 1),
+		transform 160ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blyrics-lyric-notice--visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Drag a lyric word onto a drop zone */
+.blyrics-lyric-dragging,
+.blyrics-lyric-dragging * {
+	user-select: none !important;
+	cursor: grabbing !important;
+}
+
+.blyrics-drop-zones {
+	position: fixed;
+	z-index: 2147483000;
+	display: flex;
+	gap: 10px;
+	transform: translate(-50%, 12px);
+	opacity: 0;
+	pointer-events: none;
+	transition:
+		opacity 160ms cubic-bezier(0.4, 0, 0.2, 1),
+		transform 160ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blyrics-drop-zones--visible {
+	opacity: 1;
+	transform: translate(-50%, 0);
+	pointer-events: auto;
+}
+
+.blyrics-drop-zone {
+	padding: 14px 22px;
+	border: 1.5px dashed hsla(0, 0%, 100%, 0.4);
+	border-radius: 14px;
+	background-color: hsla(0, 0%, 8%, 0.72);
+	backdrop-filter: blur(26px);
+	box-shadow: rgba(0, 0, 0, 0.32) 0 12px 32px -12px;
+	color: hsla(0, 0%, 100%, 0.88);
+	font-size: 13px;
+	font-weight: 600;
+	white-space: nowrap;
+	transition:
+		background-color 140ms cubic-bezier(0.4, 0, 0.2, 1),
+		border-color 140ms cubic-bezier(0.4, 0, 0.2, 1),
+		transform 140ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blyrics-drop-zone--active {
+	border-style: solid;
+	border-color: var(--dock-accent, hsl(45, 95%, 66%));
+	background-color: color-mix(in srgb, var(--dock-accent, hsl(45, 95%, 60%)) 22%, hsla(0, 0%, 8%, 0.8));
+	transform: scale(1.06);
+}
+
+.blyrics-drop-zone--danger.blyrics-drop-zone--active {
+	border-color: hsl(0, 85%, 65%);
+	background-color: hsla(0, 70%, 35%, 0.8);
+}
+
+.blyrics-drag-ghost {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2147483001;
+	max-width: 240px;
+	overflow: hidden;
+	padding: 4px 10px;
+	border-radius: 8px;
+	background-color: hsla(0, 0%, 100%, 0.92);
+	color: hsl(0, 0%, 8%);
+	font-size: 13px;
+	font-weight: 600;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	pointer-events: none;
+}
+
 .blyrics-dock__menu-icon {
 	display: inline-flex;
 	align-items: center;

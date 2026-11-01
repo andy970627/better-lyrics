@@ -3006,5 +3006,117 @@
   "options_display_videoQualityApplyHint": {
     "message": "Higher-resolution playback changes apply to the next video or after refreshing. Preferred quality uses the closest available lower resolution.",
     "description": "Tooltip explaining when video playback changes take effect and how unavailable resolutions fall back."
+  },
+
+  "vocab_menu_label": {
+    "message": "Lyric actions",
+    "description": "Accessible label for the menu opened by right-clicking a lyric line"
+  },
+  "vocab_menu_saveWord": {
+    "message": "Save “$WORD$”",
+    "description": "Right-click menu item that saves the word under the cursor to the saved words list",
+    "placeholders": {
+      "word": {
+        "content": "$1"
+      }
+    }
+  },
+  "vocab_menu_saveLine": {
+    "message": "Save this line",
+    "description": "Right-click menu item that saves the whole lyric line to the saved words list"
+  },
+  "vocab_menu_removeTranslation": {
+    "message": "Remove wrong translation",
+    "description": "Right-click menu item that hides this line's translation for this song"
+  },
+  "vocab_menu_restoreTranslations": {
+    "message": "Restore removed translations",
+    "description": "Right-click menu item that brings back translations removed for this song"
+  },
+  "vocab_drop_saveWord": {
+    "message": "Drop to save word",
+    "description": "Drop zone shown while dragging a lyric word; dropping saves the word"
+  },
+  "vocab_drop_saveLine": {
+    "message": "Drop to save line",
+    "description": "Drop zone shown while dragging a lyric word; dropping saves its whole line"
+  },
+  "vocab_drop_removeTranslation": {
+    "message": "Drop to remove translation",
+    "description": "Drop zone shown while dragging a translation; dropping hides that wrong translation"
+  },
+  "vocab_notice_saved": {
+    "message": "Saved",
+    "description": "Short notice after a word or line is saved"
+  },
+  "vocab_notice_exists": {
+    "message": "Already saved",
+    "description": "Short notice when the word was already saved from this song"
+  },
+  "vocab_notice_failed": {
+    "message": "Something went wrong",
+    "description": "Short notice when saving or deleting fails"
+  },
+  "vocab_notice_translationRemoved": {
+    "message": "Translation removed",
+    "description": "Short notice after a wrong translation is hidden"
+  },
+  "vocab_notice_translationsRestored": {
+    "message": "Translations restored",
+    "description": "Short notice after removed translations are brought back"
+  },
+  "vocab_options_savedWords": {
+    "message": "Saved words",
+    "description": "Settings row and modal title for the list of saved words"
+  },
+  "vocab_options_savedWordsHint": {
+    "message": "Drag a lyric word to the save zone, or right-click a line",
+    "description": "Hint under the saved words row explaining how to save words"
+  },
+  "vocab_options_empty": {
+    "message": "No saved words yet. While a song plays, drag a word from the lyrics onto “Drop to save word”.",
+    "description": "Empty state of the saved words list"
+  },
+  "vocab_options_deleteWord": {
+    "message": "Delete “$WORD$”",
+    "description": "Accessible label for the button that deletes one saved word",
+    "placeholders": {
+      "word": {
+        "content": "$1"
+      }
+    }
+  },
+  "vocab_options_copyCsv": {
+    "message": "Copy as CSV",
+    "description": "Button that copies all saved words to the clipboard as CSV"
+  },
+  "vocab_options_copied": {
+    "message": "Copied to clipboard",
+    "description": "Toast after saved words are copied"
+  },
+  "vocab_options_clearAll": {
+    "message": "Clear all",
+    "description": "Button that deletes every saved word"
+  },
+  "vocab_options_cleared": {
+    "message": "Saved words cleared",
+    "description": "Toast after all saved words are deleted"
+  },
+  "vocab_options_undo": {
+    "message": "Undo",
+    "description": "Toast action that brings back the cleared saved words"
+  },
+  "vocab_options_hiddenTranslationsCount": {
+    "message": "Removed translations: $COUNT$",
+    "description": "Settings row showing how many wrong translations the user has hidden",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "vocab_options_restoreAll": {
+    "message": "Restore all",
+    "description": "Button that brings back every removed translation"
   }
 }

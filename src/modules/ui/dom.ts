@@ -41,6 +41,8 @@ import type { ThumbnailElement } from "@modules/lyrics/requestSniffer/NextRespon
 import { getArtworkMetadata } from "@modules/lyrics/requestSniffer/requestSniffer";
 import { measureWidth, type ObserverHandle, observeLayoutWidth, observeResize } from "@modules/ui/layout/layoutWidth";
 import { lyricsElementAdded, mainView } from "@modules/ui/mainLyricsView";
+import { attachLyricContextMenu } from "@modules/ui/lyricContextMenu";
+import { attachLyricDrag } from "@modules/ui/lyricDrag";
 import { publishSecondaryViews } from "@modules/ui/secondaryViews";
 import { syncKaraoke } from "@modules/karaoke/karaokeView";
 import {
@@ -280,6 +282,8 @@ export function createLyricsWrapper(): HTMLElement {
   wrapper.id = LYRICS_WRAPPER_ID;
   wrapper.dataset.extensionRoot = "true";
   tabRenderer.appendChild(wrapper);
+  attachLyricContextMenu(wrapper);
+  attachLyricDrag(wrapper);
 
   wrapper.addEventListener("copy", (e: ClipboardEvent) => {
     const selection = window.getSelection();

@@ -57,6 +57,7 @@ import { mountDropdownField, setDropdownFieldValue } from "@/options/dropdownFie
 import { TRANSLATION_LANGUAGES } from "@/options/translationLanguages";
 import { observeSupportStage, renderAboutLinks } from "@/options/aboutPage";
 import { createModal, type Modal } from "@/ui/modal";
+import { initSavedWords } from "@/options/savedWords";
 import { initTabStrip, type TabStrip } from "@/ui/tabStrip";
 import { renderStatBar } from "@/ui/statBar";
 import { toast } from "@/ui/toast";
@@ -824,6 +825,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const themesReady = localeReady.then(initializeThemes).catch(err => errorCore("Failed to initialize themes:", err));
   setupLazyCodeEditor(themesReady);
   initLangExclusionsModal();
+  initSavedWords();
 
   document.getElementById("browse-themes-btn")?.addEventListener("click", () => {
     chrome.tabs.create({

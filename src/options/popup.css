@@ -825,6 +825,73 @@ nav {
 	max-height: calc(80vh - 180px);
 }
 
+/* -- Saved Words Modal --------------------------*/
+.saved-words-modal {
+	--modal-width: 500px;
+}
+
+.saved-words-empty {
+	margin: 0;
+	padding: 1rem 1.25rem;
+	color: var(--text-muted);
+	font-size: var(--font-size-sm);
+}
+
+.saved-words-list {
+	margin: 0;
+	padding: 0.5rem var(--text-inset);
+	list-style: none;
+	max-height: calc(80vh - 180px);
+	overflow-y: auto;
+}
+
+.saved-word {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	padding: 0.625rem 0;
+	border-bottom: 1px solid var(--divider);
+}
+
+.saved-word:last-child {
+	border-bottom: none;
+}
+
+.saved-word__body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 0.125rem;
+	min-width: 0;
+}
+
+.saved-word__text {
+	color: var(--text-strong);
+	font-size: var(--font-size-base);
+	font-weight: 600;
+	overflow-wrap: anywhere;
+}
+
+.saved-word__line,
+.saved-word__translation {
+	color: var(--text);
+	font-size: var(--font-size-sm);
+	overflow-wrap: anywhere;
+}
+
+.saved-word__translation {
+	color: var(--text-muted);
+}
+
+.saved-word__source {
+	color: var(--text-faint);
+	font-size: var(--font-size-xs);
+}
+
+.saved-word__delete {
+	flex: none;
+}
+
 /* -- Reduced motion -------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

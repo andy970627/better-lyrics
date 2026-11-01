@@ -3050,5 +3050,93 @@
   "options_display_videoQualityApplyHint": {
     "message": "Higher-resolution playback changes apply to the next video or after refreshing. Preferred quality uses the closest available lower resolution.",
     "description": "Tooltip explaining when video playback changes take effect and how unavailable resolutions fall back."
+  },
+
+  "vocab_menu_label": {
+    "message": "歌詞操作"
+  },
+  "vocab_menu_saveWord": {
+    "message": "儲存「$WORD$」",
+    "placeholders": {
+      "word": {
+        "content": "$1"
+      }
+    }
+  },
+  "vocab_menu_saveLine": {
+    "message": "儲存整句"
+  },
+  "vocab_menu_removeTranslation": {
+    "message": "刪除錯誤翻譯"
+  },
+  "vocab_menu_restoreTranslations": {
+    "message": "還原已刪除的翻譯"
+  },
+  "vocab_drop_saveWord": {
+    "message": "放開以儲存單字"
+  },
+  "vocab_drop_saveLine": {
+    "message": "放開以儲存整句"
+  },
+  "vocab_drop_removeTranslation": {
+    "message": "放開以刪除翻譯"
+  },
+  "vocab_notice_saved": {
+    "message": "已儲存"
+  },
+  "vocab_notice_exists": {
+    "message": "已經儲存過了"
+  },
+  "vocab_notice_failed": {
+    "message": "發生錯誤"
+  },
+  "vocab_notice_translationRemoved": {
+    "message": "已刪除翻譯"
+  },
+  "vocab_notice_translationsRestored": {
+    "message": "已還原翻譯"
+  },
+  "vocab_options_savedWords": {
+    "message": "單字本"
+  },
+  "vocab_options_savedWordsHint": {
+    "message": "把歌詞中的單字拖到儲存區，或在歌詞上按右鍵"
+  },
+  "vocab_options_empty": {
+    "message": "還沒有儲存任何單字。播放歌曲時，把歌詞裡的單字拖到「放開以儲存單字」即可。"
+  },
+  "vocab_options_deleteWord": {
+    "message": "刪除「$WORD$」",
+    "placeholders": {
+      "word": {
+        "content": "$1"
+      }
+    }
+  },
+  "vocab_options_copyCsv": {
+    "message": "複製為 CSV"
+  },
+  "vocab_options_copied": {
+    "message": "已複製到剪貼簿"
+  },
+  "vocab_options_clearAll": {
+    "message": "全部清除"
+  },
+  "vocab_options_cleared": {
+    "message": "已清除單字本"
+  },
+  "vocab_options_undo": {
+    "message": "復原"
+  },
+  "vocab_options_hiddenTranslationsCount": {
+    "message": "已刪除的翻譯：$COUNT$",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "vocab_options_restoreAll": {
+    "message": "全部還原"
   }
 }

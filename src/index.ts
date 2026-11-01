@@ -48,6 +48,7 @@ import {
 import { subscribeToCustomStyles } from "@modules/ui/styleInjector";
 import { applyLoggingSetting } from "@modules/settings/settings";
 import { logCore, logError } from "@core/logger";
+import { loadHiddenTranslations } from "@core/vocabulary";
 import { startVideoQualitySettingsBridge } from "@modules/settings/videoQualityBridge";
 
 /**
@@ -72,6 +73,7 @@ async function modify(isDisposed: () => boolean): Promise<void> {
   handleSettings();
   setupWakeLockForFullscreen();
   loadTranslationSettings();
+  void loadHiddenTranslations();
   loadEndTimeModeSetting();
   loadLyricOffsetSettings();
   loadPassiveScrollSetting();
