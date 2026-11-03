@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"><title>YouTube Music</title>
+<style>
+ body{margin:0;background:#030303;color:#fff;font:28px "Noto Sans CJK JP","Noto Sans JP",sans-serif}
+ ytmusic-player-bar{display:block;position:fixed;bottom:0;left:0;right:0;height:60px;background:#212121;font-size:14px;padding:10px}
+ #tab-renderer{position:fixed;top:0;right:0;width:620px;bottom:72px;overflow:auto;background:#0f0f0f}
+ .blyrics--line{padding:14px 24px;cursor:pointer}
+ .blyrics-line-main{position:relative;font-weight:700}
+ .blyrics-highlight-run{position:absolute;inset:0;color:transparent}
+ .blyrics--translated{font-size:18px;opacity:.7;margin-top:4px}
+</style></head><body>
+<ytmusic-player-bar><div class="title">夜に駆ける</div><div class="byline">YOASOBI • THE BOOK • 2021</div></ytmusic-player-bar>
+<div id="tab-renderer"><div id="blyrics-wrapper"><div class="blyrics-container" id="lines"></div></div></div>
+<script>
+const lines = [
+  ["君の名前を呼んでいたのに", "明明一直呼喚著你的名字", 12.3],
+  ["もう会えないかもしれない", "也許再也見不到了", 18.1],
+  ["夢を見ているように笑ってくれた", "這是一句錯得離譜的翻譯", 24.6],
+  ["I've been waiting for you, but you never showed up", "我一直在等你，但你從沒出現", 31.0],
+  ["I would have given up everything", "我本來願意放棄一切", 37.5],
+];
+window.seeks = [];
+const container = document.getElementById("lines");
+function wordsOf(text){ return /[a-z]/i.test(text) ? text.split(/(\s+)/) : text.match(/.{1,2}/g); }
+function run(text, time, overlay){
+  const span = document.createElement("span");
+  span.className = "blyrics-bidi-run" + (overlay ? " blyrics-highlight-run" : "");
+  if (overlay) span.setAttribute("aria-hidden","true");
+  let t = time;
+  for (const w of wordsOf(text)) {
+    if (/^\s+$/.test(w)) { span.appendChild(document.createTextNode(w)); continue; }
+    const g = document.createElement("span"); g.className = "blyrics-word-group"; g.dataset.content = w;
+    const word = document.createElement("span"); word.className = "blyrics--word" + (overlay ? " blyrics-word-highlight" : "");
+    word.dataset.time = String(t); t += 0.4; word.textContent = w; g.appendChild(word); span.appendChild(g);
+  }
+  return span;
+}
+for (const [text, tr, time] of lines) {
+  const line = document.createElement("div"); line.className = "blyrics--line";
+  const main = document.createElement("div"); main.className = "blyrics-line-main blyrics-content-line";
+  main.append(run(text, time, true), run(text, time, false));
+  const t = document.createElement("div"); t.className = "blyrics--translated blyrics-content-line"; t.lang = "zh-TW"; t.textContent = tr;
+  line.append(main, t);
+  line.addEventListener("click", () => window.seeks.push(time));
+  container.appendChild(line);
+}
+</script></body></html>

@@ -2,6 +2,8 @@
 
 這個資料夾是一組語言學習專案的起點。它暫時放在 Better Lyrics 的 fork 裡，只是因為目前只有這個 repo 可以用；裡面的東西**都不屬於 Better Lyrics**，之後會搬到各自的 repo。
 
+> 交給 AI 代理接手時，請它先讀 [AGENTS.md](AGENTS.md)。
+
 ## 結構
 
 ```
@@ -32,6 +34,7 @@ learning/
 cd learning
 npm install
 npm run build
+cd apps/ytmusic-lyrics && npm run e2e   # 端對端測試（第一次要先裝 Playwright，見 AGENTS.md）
 ```
 
 產出在 `apps/ytmusic-lyrics/dist/`：`chrome/`、`firefox/` 兩個資料夾和對應的 zip。
