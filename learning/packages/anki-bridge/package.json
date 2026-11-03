@@ -1,0 +1,12 @@
+{
+  "name": "@learning/anki-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Turns language-learning items into Anki notes: a shared note type, AnkiConnect sync via yanki-connect, and a TSV file Anki can import.",
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": { "typecheck": "tsc --noEmit -p ." },
+  "dependencies": { "yanki-connect": "^5.2.1" }
+}

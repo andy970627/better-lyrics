@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <title>Lyric Study</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="head">
+    <h1>Lyric Study</h1>
+    <nav class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="words">單字本 <span id="word-count" class="count">0</span></button>
+      <button role="tab" aria-selected="false" data-tab="settings">設定</button>
+    </nav>
+  </header>
+
+  <section data-panel="words">
+    <div class="anki">
+      <div class="anki__status" id="anki-status">還有 <b id="pending-count">0</b> 個還沒送到 Anki</div>
+      <div class="row">
+        <button id="sync-btn" class="primary" type="button">送到 Anki</button>
+        <button id="tsv-btn" type="button" title="沒裝 AnkiConnect 時，用 Anki 的「檔案 → 匯入」">下載匯入檔</button>
+      </div>
+    </div>
+    <input id="search" type="search" placeholder="搜尋單字、歌詞、歌名" aria-label="搜尋">
+    <p id="empty" class="empty">還沒有單字。播放歌曲時，把歌詞裡的字拖到「放開以儲存單字」，或在小卡上按「☆ 存」。</p>
+    <ul id="list" class="list"></ul>
+    <button id="clear-btn" class="danger" type="button">全部清除</button>
+  </section>
+
+  <section data-panel="settings" hidden>
+    <h2>歌詞標記</h2>
+    <label class="toggle"><input type="checkbox" data-setting="marks"> 顯示文法標記</label>
+    <label class="field">標記多寡
+      <select data-setting="markLevel">
+        <option value="all">全部詞性</option>
+        <option value="grammar">只標文法（助詞、時態、句型）</option>
+      </select>
+    </label>
+    <label class="toggle"><input type="checkbox" data-setting="ja"> 日文</label>
+    <label class="toggle"><input type="checkbox" data-setting="en"> 英文</label>
+    <ul class="legend">
+      <li><span class="mark mark--noun">名詞</span><span class="mark mark--verb">動詞</span><span class="mark mark--adj">形容詞・副詞</span><span class="mark mark--pron">代名詞</span></li>
+      <li><span class="mark mark--particle">助詞・介系詞</span><span class="mark mark--aux">助動詞・時態</span><span class="mark mark--pattern">文法句型</span></li>
+    </ul>
+
+    <h2>小卡</h2>
+    <label class="toggle"><input type="checkbox" data-setting="meaning"> 顯示簡短意思</label>
+    <label class="field">意思的語言
+      <select data-setting="meaningLang">
+        <option value="zh-TW">繁體中文</option>
+        <option value="zh-CN">简体中文</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+      </select>
+    </label>
+
+    <h2>Anki</h2>
+    <label class="toggle"><input type="checkbox" data-setting="ankiAutoSync"> 存單字時自動送到 Anki</label>
+    <label class="field">牌組名稱 <input type="text" data-setting="ankiDeck"></label>
+    <p class="hint">需要在 Anki 安裝 <a href="https://ankiweb.net/shared/info/2055492159" target="_blank" rel="noopener">AnkiConnect</a> 外掛並開著 Anki。第一次同步時，Anki 會跳出視窗請你允許。</p>
+
+    <h2>隱藏的翻譯</h2>
+    <div class="row"><span id="hidden-count">0 句</span><button id="restore-btn" type="button">全部還原</button></div>
+  </section>
+  <script src="popup.js"></script>
+</body>
+</html>

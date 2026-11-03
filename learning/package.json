@@ -1,0 +1,20 @@
+{
+  "name": "language-learning",
+  "private": true,
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace apps/ytmusic-lyrics",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.3.7",
+    "@types/node": "^26.6.6",
+    "esbuild": "^0.25.12",
+    "typescript": "^5.9.3"
+  }
+}

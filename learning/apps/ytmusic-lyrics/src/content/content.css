@@ -1,0 +1,92 @@
+/* -- Grammar marks --------------------------
+   Content words get a thin underline, function words a soft wash, grammar expressions a wavy line. */
+::highlight(ls-noun) { text-decoration: underline 1.5px #64b5f6; text-underline-offset: 0.2em; }
+::highlight(ls-pron) { text-decoration: underline dotted 1.5px #b0bec5; text-underline-offset: 0.2em; }
+::highlight(ls-verb) { text-decoration: underline 1.5px #ff8a65; text-underline-offset: 0.2em; }
+::highlight(ls-adj) { text-decoration: underline 1.5px #81c784; text-underline-offset: 0.2em; }
+::highlight(ls-particle) { background-color: rgba(255, 213, 79, 0.17); }
+::highlight(ls-aux) { background-color: rgba(186, 104, 200, 0.2); }
+::highlight(ls-pattern) { text-decoration: underline wavy 1.5px #e1a6f0; text-underline-offset: 0.22em; }
+
+.ls-hidden-translation { display: none !important; }
+
+/* -- Hover card -------------------------- */
+.ls-card {
+  position: fixed; z-index: 2147483001; max-width: 280px; min-width: 160px;
+  padding: 10px 12px; border-radius: 12px;
+  background: rgba(24, 24, 28, 0.94); color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  font: 500 13px/1.45 system-ui, "Noto Sans TC", "Noto Sans JP", sans-serif;
+  opacity: 0; transform: translateY(4px); transition: opacity 140ms ease, transform 140ms ease;
+  border-top: 3px solid var(--ls-accent, #888);
+  display: flex; flex-direction: column; pointer-events: none;
+}
+.ls-card--below { border-top: 0; border-bottom: 3px solid var(--ls-accent, #888); }
+.ls-card--below .ls-card__actions { order: -1; }
+.ls-card--visible { opacity: 1; transform: none; }
+.ls-card--noun { --ls-accent: #64b5f6; }
+.ls-card--pron { --ls-accent: #b0bec5; }
+.ls-card--verb { --ls-accent: #ff8a65; }
+.ls-card--adj { --ls-accent: #81c784; }
+.ls-card--particle { --ls-accent: #ffd54f; }
+.ls-card--aux { --ls-accent: #ba68c8; }
+.ls-card__head { display: flex; align-items: baseline; gap: 8px; }
+.ls-card__word { font-size: 18px; font-weight: 700; }
+.ls-card__reading { opacity: 0.75; }
+.ls-card__actions {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  margin: 8px -4px -4px; padding: 4px; pointer-events: auto;
+}
+.ls-card--below .ls-card__actions { margin: -4px -4px 8px; }
+.ls-card__save {
+  padding: 2px 8px; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 999px;
+  background: transparent; color: inherit; font: inherit; cursor: pointer;
+}
+.ls-card__save:hover { background: rgba(255, 255, 255, 0.1); }
+.ls-card__pos { margin-top: 2px; opacity: 0.7; font-size: 12px; }
+.ls-card__pattern { margin-top: 6px; color: #e1a6f0; }
+.ls-card__note { margin-top: 4px; }
+.ls-card__meaning { margin-top: 6px; font-weight: 700; }
+.ls-card__dict { color: inherit; opacity: 0.6; font-size: 11px; text-decoration: none; }
+.ls-card__dict:hover { opacity: 1; }
+
+/* -- Drag to save -------------------------- */
+.ls-dragging, .ls-dragging * { user-select: none !important; cursor: grabbing !important; }
+.ls-zones {
+  position: fixed; z-index: 2147483000; display: flex; gap: 10px;
+  transform: translate(-50%, 12px); opacity: 0; pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+.ls-zones--visible { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.ls-zone {
+  padding: 14px 22px; border: 1.5px dashed rgba(255, 255, 255, 0.4); border-radius: 14px;
+  background: rgba(20, 20, 24, 0.78); backdrop-filter: blur(20px); color: rgba(255, 255, 255, 0.9);
+  font: 600 13px system-ui, "Noto Sans TC", sans-serif; white-space: nowrap;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+.ls-zone--active { border-style: solid; border-color: #ffd54f; background: rgba(120, 96, 20, 0.85); transform: scale(1.06); }
+.ls-zone--danger.ls-zone--active { border-color: #ef5350; background: rgba(110, 28, 28, 0.85); }
+.ls-ghost {
+  position: fixed; top: 0; left: 0; z-index: 2147483002; max-width: 240px; overflow: hidden;
+  padding: 4px 10px; border-radius: 8px; background: rgba(255, 255, 255, 0.94); color: #111;
+  font: 600 13px system-ui, sans-serif; white-space: nowrap; text-overflow: ellipsis; pointer-events: none;
+}
+
+/* -- Menu and notice -------------------------- */
+.ls-menu {
+  position: fixed; z-index: 2147483001; display: flex; flex-direction: column; gap: 1px; min-width: 170px; padding: 5px;
+  border-radius: 11px; background: rgba(28, 28, 32, 0.95); box-shadow: 0 10px 28px -10px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+}
+.ls-menu__item {
+  padding: 7px 10px; border: 0; border-radius: 7px; background: transparent; color: rgba(255, 255, 255, 0.85);
+  font: 500 13px system-ui, "Noto Sans TC", sans-serif; text-align: left; cursor: pointer;
+}
+.ls-menu__item:hover, .ls-menu__item:focus-visible { outline: none; background: rgba(255, 255, 255, 0.1); color: #fff; }
+.ls-notice {
+  position: fixed; z-index: 2147483002; padding: 6px 10px; border-radius: 9px;
+  background: rgba(20, 20, 24, 0.9); color: rgba(255, 255, 255, 0.94); font: 500 12px system-ui, "Noto Sans TC", sans-serif;
+  pointer-events: none; opacity: 0; transform: translateY(4px); transition: opacity 160ms ease, transform 160ms ease;
+}
+.ls-notice--visible { opacity: 1; transform: none; }

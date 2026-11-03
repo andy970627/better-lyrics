@@ -1,0 +1,16 @@
+{
+  "name": "@learning/ytmusic-lyrics",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Companion extension for Better Lyrics on YouTube Music: grammar marks, hover cards, saved words, Anki sync, and hiding wrong translations.",
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "dependencies": {
+    "@learning/anki-bridge": "*",
+    "@learning/grammar-marks": "*"
+  }
+}
