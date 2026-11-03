@@ -8,8 +8,7 @@
   "main": "src/index.ts",
   "types": "src/index.ts",
   "scripts": {
-    "typecheck": "tsc --noEmit -p .",
-    "demo": "node --experimental-strip-types demo.ts"
+    "typecheck": "tsc --noEmit -p ."
   },
   "dependencies": {
     "compromise": "^14.14.4",
